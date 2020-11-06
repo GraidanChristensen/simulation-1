@@ -12,7 +12,7 @@ module.exports = {
 
     addProduct: (req, res) => {
         const db = req.app.get('db');
-        const {url, name, price} = req.body;
+        const {name, url, price} = req.body;
 
         db.add_product(name, url, price)
         .then(() => {

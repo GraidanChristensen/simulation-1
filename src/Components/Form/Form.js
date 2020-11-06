@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {Component} from 'react';
 
 class Form extends Component{
@@ -5,8 +6,8 @@ class Form extends Component{
         super();
 
         this.state ={
-            url: "",
             name: "",
+            url: "",
             price: 0
         }
     }
@@ -29,8 +30,23 @@ class Form extends Component{
         })
     }
 
-    handleCancel = () => {
 
+    addProduct = () => {
+        //add product to inventory
+        axios.post('/api/product', this.state)
+        .then(res => {
+            res.status(200);
+        }).catch(err => console.log(err));
+
+        //call get inventory to update it
+        this.props.getInventory();
+
+        //clear state
+        this.setState({
+            name: '',
+            url: '',
+            price: 0
+        });
     }
 
     render(){
@@ -50,7 +66,7 @@ class Form extends Component{
                     }} >
                         Cancel
                     </button>
-                    <button>Add to Inventory</button>
+                    <button onClick={this.addProduct}>Add to Inventory</button>
                 </div>
             </div>
         )
