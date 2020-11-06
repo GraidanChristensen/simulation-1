@@ -15,7 +15,6 @@ class App extends Component{
         }
     }
 
-
     componentDidMount(){
         axios.get('/api/inventory')
         .then(res => {

@@ -23,5 +23,6 @@ massive({
 
 //ENDPOINTS
 app.get('/api/inventory', controller.getInventory);
+app.post('/api/product', controller.addProduct);
 
 app.listen(SERVER_PORT, ()=>console.log(`server listening on: ${SERVER_PORT}`));
