@@ -1,8 +1,6 @@
 .main{
     display: flex;
     justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.productImage{
-    width: 100px;
-}

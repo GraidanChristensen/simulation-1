@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, {Component} from 'react';
+import './Form.css';
 
 class Form extends Component{
     constructor(){
@@ -7,8 +8,8 @@ class Form extends Component{
 
         this.state ={
             name: "",
-            url: "",
-            price: 0
+            url: "https://img.icons8.com/ios/452/no-image.png",
+            price: null
         }
     }
 
@@ -49,12 +50,25 @@ class Form extends Component{
         });
     }
 
+    componentDidUpdate(){
+        if(this.state.url === ""){
+            this.setState({
+                url:"https://img.icons8.com/ios/452/no-image.png"
+            })
+        }
+    }
+
     render(){
         return(
-            <div>
-                <h1>Form</h1>
-                <input value={this.state.url} onChange={this.handleURL} placeholder="URL..."/>
+            <div className="Form">
+                <div className="imageContainer">
+                    <img src={this.state.url}/>
+                </div>
+                <h5>Image URL:</h5>
+                <input onChange={this.handleURL} placeholder="URL..."/>
+                <h5>Product Name:</h5>
                 <input value={this.state.name} onChange={this.handleName} placeholder="Name..."/>
+                <h5>Price:</h5>
                 <input value={this.state.price} onChange={this.handlePrice} placeholder="Price..."/>
                 <div className="buttons">
                     <button onClick={() => {

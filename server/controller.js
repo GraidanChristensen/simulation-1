@@ -22,5 +22,17 @@ module.exports = {
             res.status(500).send("Oops! Something went wrong");
         })
 
+    },
+
+    deleteProduct: (req, res) => {
+        const db = req.app.get('db');
+        const {name} = req.params;
+
+        db.delete_product(name)
+        .then(() => {
+            res.status(200);
+        }).catch(err => {
+            res.status(500).send("Oops! Something went wrong");
+        })
     }
 }
